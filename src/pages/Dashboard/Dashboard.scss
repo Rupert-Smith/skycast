@@ -1,0 +1,90 @@
+.container {
+  padding: 1em;
+  padding-bottom: 7em;
+  background-size: cover;
+  background-position: center;
+  background-image: url("../../assets/images/sky.jpg");
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  * {
+    font-family: var(--font-family-main);
+  }
+
+  height: 100%;
+
+  .header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    justify-content: center;
+  }
+
+  .cardWrapper {
+    padding: 0em 4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .skycastLogo {
+    width: 10em;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .searchContainer {
+    margin-bottom: 0.5em;
+    gap: 8px;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background-color: var(--colour-brand-tertiary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    min-width: 400px;
+
+    input {
+      padding: 10px 14px;
+      flex: 1;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: var(--text-size-lg);
+
+      &::placeholder {
+        color: var(--colour-neutral-400);
+      }
+    }
+
+    svg {
+      width: 1.2em;
+      height: 1.2em;
+      color: var(--colour-neutral-600);
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 100%;
+      border-radius: 5px;
+      border: none;
+      background-color: var(--colour-brand-primary);
+      svg {
+        color: var(--colour-brand-tertiary);
+      }
+    }
+  }
+}

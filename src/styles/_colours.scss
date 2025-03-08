@@ -1,0 +1,59 @@
+:root {
+  /* Brand Colors */
+  --colour-brand-primary: rgb(59, 130, 246);
+  --colour-brand-secondary: #facc15;
+  --colour-brand-tertiary: #ffffff;
+  --colour-brand-accent: #f97316;
+
+  /* Weather colors */
+  --colour-brand-primary-transparent: rgba(64, 151, 244, 0.8);
+  --colour-sunny-transparent: rgba(250, 204, 21, 0.89);
+  --colour-cloudy-transparent: rgba(200, 200, 200, 0.89);
+  --colour-snow-transparent: rgba(255, 255, 255, 0.89);
+  --colour-storm-transparent: rgba(30, 30, 30, 0.89);
+
+  /* Primary shades */
+  --colour-brand-primary-100: rgb(235, 243, 253);
+  --colour-brand-primary-200: rgb(205, 225, 252);
+  --colour-brand-primary-300: rgb(165, 200, 250);
+  --colour-brand-primary-400: rgb(125, 175, 247);
+  --colour-brand-primary-500: rgb(95, 150, 244);
+  --colour-brand-primary-600: rgb(75, 125, 230);
+  --colour-brand-primary-700: rgb(60, 100, 200);
+  --colour-brand-primary-800: rgb(50, 80, 170);
+  --colour-brand-primary-900: rgb(40, 65, 140);
+
+  /* Neutral Scale */
+  --colour-neutral-900: rgb(0, 0, 0);
+  --colour-neutral-800: rgb(43, 43, 43);
+  --colour-neutral-700: rgb(85, 85, 85);
+  --colour-neutral-600: rgb(100, 96, 104);
+  --colour-neutral-500: rgb(102, 102, 102);
+  --colour-neutral-400: rgb(139, 155, 173);
+  --colour-neutral-300: rgb(200, 200, 200);
+  --colour-neutral-200: rgb(229, 229, 229);
+  --colour-neutral-100: rgb(244, 244, 244);
+  --colour-neutral-50: rgb(255, 254, 248);
+
+  /* Support Colors */
+  --colour-positive-dark: rgb(41, 135, 126);
+  --colour-positive-light: rgb(88, 203, 168);
+  --colour-negative: rgb(213, 88, 56);
+  --colour-warning: rgb(240, 160, 69);
+  --colour-info-dark: rgb(27, 127, 195);
+  --colour-info-light: #4dace4;
+  --colour-highlight: rgb(231, 102, 159);
+  --colour-muted: rgb(149, 199, 92);
+
+  /* Decorative Colors */
+  --colour-decor-magenta: rgb(231, 102, 159);
+  --colour-decor-purple-dark: rgb(90, 40, 125);
+  --colour-decor-purple-bright: rgb(94, 16, 177);
+  --colour-decor-teal-dark: rgb(41, 135, 126);
+  --colour-decor-teal-light: rgb(88, 203, 168);
+  --colour-decor-green: rgb(217, 233, 196);
+  --colour-decor-gold: rgb(127, 132, 67);
+  --colour-decor-olive: rgb(96, 95, 49);
+  --colour-decor-orange: rgb(240, 160, 69);
+  --colour-decor-red: rgb(213, 88, 56);
+}
