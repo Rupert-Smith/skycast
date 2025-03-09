@@ -3,10 +3,16 @@ import { Dashboard } from "./Dashboard";
 import { useGetWeather } from "../../hooks/useGetWeather/useGetWeather";
 import { mapWeather } from "../../utilities/mapWeather";
 import { mockWeatherData } from "../../test-utils/mockWeatherData";
+import { useGetLocation } from "../../hooks/useGetLocation/useGetLocation";
 import { mockWeatherItem } from "../../test-utils/mockWeatherItem";
+import { mockLocation } from "../../test-utils/mockLocation";
 
 jest.mock("../../hooks/useGetWeather/useGetWeather", () => ({
   useGetWeather: jest.fn(),
+}));
+
+jest.mock("../../hooks/useGetLocation/useGetLocation", () => ({
+  useGetLocation: jest.fn(),
 }));
 
 jest.mock("../../utilities/mapWeather", () => ({
@@ -21,6 +27,17 @@ const renderComponent = () => {
   jest.clearAllMocks();
   (useGetWeather as jest.Mock).mockReturnValue({
     weather: mockWeatherData,
+    resetError: jest.fn(),
+    resetWeather: jest.fn(),
+    loading: false,
+    error: null,
+  });
+
+  (useGetLocation as jest.Mock).mockReturnValue({
+    location: mockLocation,
+    resetLocation: jest.fn(),
+    fetchLocation: jest.fn(),
+    resetError: jest.fn(),
     loading: false,
     error: null,
   });

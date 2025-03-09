@@ -1,5 +1,5 @@
 :root {
-  /* Brand Colors */
+  /* Brand colors */
   --colour-brand-primary: rgb(59, 130, 246);
   --colour-brand-secondary: #facc15;
   --colour-brand-tertiary: #ffffff;
@@ -23,7 +23,7 @@
   --colour-brand-primary-800: rgb(50, 80, 170);
   --colour-brand-primary-900: rgb(40, 65, 140);
 
-  /* Neutral Scale */
+  /* Neutral scale */
   --colour-neutral-900: rgb(0, 0, 0);
   --colour-neutral-800: rgb(43, 43, 43);
   --colour-neutral-700: rgb(85, 85, 85);
@@ -35,7 +35,18 @@
   --colour-neutral-100: rgb(244, 244, 244);
   --colour-neutral-50: rgb(255, 254, 248);
 
-  /* Support Colors */
+  /* Error colors */
+  --colour-error-100: rgb(252, 228, 230);
+  --colour-error-200: rgb(250, 179, 184);
+  --colour-error-300: rgb(247, 129, 138);
+  --colour-error-400: rgb(240, 90, 101);
+  --colour-error-500: rgb(213, 63, 74);
+  --colour-error-600: rgb(180, 50, 60);
+  --colour-error-700: rgb(146, 40, 48);
+  --colour-error-800: rgb(113, 30, 37);
+  --colour-error-900: rgb(80, 20, 26);
+
+  /* Support colors */
   --colour-positive-dark: rgb(41, 135, 126);
   --colour-positive-light: rgb(88, 203, 168);
   --colour-negative: rgb(213, 88, 56);
@@ -45,7 +56,7 @@
   --colour-highlight: rgb(231, 102, 159);
   --colour-muted: rgb(149, 199, 92);
 
-  /* Decorative Colors */
+  /* Decorative colors */
   --colour-decor-magenta: rgb(231, 102, 159);
   --colour-decor-purple-dark: rgb(90, 40, 125);
   --colour-decor-purple-bright: rgb(94, 16, 177);

@@ -10,12 +10,14 @@ interface CardType {
 export const Card = ({ weatherItem }: CardType) => {
   return (
     <div className="card">
-      <div className={`header ${weatherItem.headerColor}`}>
+      <div className={`cardHeader ${weatherItem.headerColor}`}>
         <h1>{weatherItem.date}</h1>
       </div>
       <div className="cardContent">
-        <div className="weatherIcon">{weatherItem.weatherIcon}</div>
-        <p className="weatherDescription">{weatherItem.weatherDescription}</p>
+        <div className="weatherIconContainer">
+          <div className="weatherIcon">{weatherItem.weatherIcon}</div>
+          <p className="weatherDescription">{weatherItem.weatherDescription}</p>
+        </div>
         <p className="weatherTemperature">{weatherItem.temperature}°</p>
         <div className="divider" />
         <div className="weatherwindSpeed">

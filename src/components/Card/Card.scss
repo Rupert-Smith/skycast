@@ -1,18 +1,56 @@
 @import "../../styles/mixins";
 
+$borderRadius: 20px;
+
 .card {
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
   flex-grow: 1;
   margin: 1em;
-  border-radius: 10px;
+  border-radius: $borderRadius;
   background-color: var(--colour-brand-primary-transparent);
 
-  .header {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+  @include media("laptop") {
+    margin: 0.5em;
+  }
+
+  @include media("tablet") {
+    display: flex;
+    margin: 0.5em;
+    width: 100%;
+  }
+
+  .cardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: $borderRadius;
+    border-top-right-radius: $borderRadius;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1em;
 
     h1 {
       color: var(--colour-neutral-800);
       margin: 0;
+
+      @include media("laptop-l") {
+        font-size: var(--display-size-xs);
+      }
+
+      @include media("tablet") {
+        font-size: var(--display-size-xs);
+      }
+
+      @include media("mobile-m") {
+        font-size: var(--text-size-md);
+      }
+    }
+
+    @include media("tablet") {
+      width: 20%;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: $borderRadius;
     }
   }
 
@@ -37,12 +75,31 @@
 
   .cardContent {
     padding: 2em 1.5em;
+    padding-top: 1.2em;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
     gap: 1em;
     color: var(--colour-brand-tertiary);
+
+    @include media("laptop-l") {
+      padding: 2em 0em;
+    }
+
+    @include media("tablet") {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: row;
+      padding: 0.5em 2em;
+    }
+  }
+
+  .weatherIconContainer {
+    display: flex;
+    gap: 0.4em;
+    flex-direction: column;
+    align-items: center;
   }
 
   .weatherIcon {
@@ -53,30 +110,68 @@
       height: 10em;
 
       @include media("laptop-l") {
-        width: 8em;
-        height: 8em;
+        width: 5em;
+        height: 5em;
+      }
+
+      @include media("tablet") {
+        width: 4em;
+        height: 4em;
+      }
+
+      @include media("mobile-l") {
+        width: 3em;
+        height: 3em;
       }
     }
   }
 
   .weatherDescription {
+    width: 10em;
+    padding: 0.5em;
+    height: 2em;
+    text-align: center;
     font-size: var(--text-size-lg);
+
+    @include media("laptop-l") {
+      font-size: var(--text-size-md);
+      width: 8em;
+    }
+
+    @include media("tablet") {
+      display: none;
+    }
   }
 
   .weatherTemperature {
     font-size: var(--display-size-xl);
     text-align: center;
-    width: 100%;
     padding: 0.2em 0em;
 
-    // span {
-    //   font-size: var(--display-size-md);
-    // }
+    @include media("laptop-l") {
+      font-size: var(--display-size-md);
+    }
+
+    @include media("tablet") {
+      font-size: var(--display-size-sm);
+    }
+
+    @include media("mobile-m") {
+      font-size: var(--display-size-xs);
+    }
   }
 
   .divider {
     border-bottom: 2.5px solid rgba(0, 0, 0, 0.109);
     width: 100%;
+
+    @include media("laptop-l") {
+      width: 60%;
+    }
+
+    @include media("tablet") {
+      display: none;
+    }
   }
 
   .weatherwindSpeed {
@@ -84,13 +179,50 @@
     gap: 0.5em;
     align-items: center;
     font-size: var(--display-size-sm);
+    @include media("laptop-l") {
+      gap: 0.3em;
+    }
+
+    p {
+      @include media("laptop-l") {
+        font-size: var(--text-size-md);
+      }
+      @include media("tablet") {
+        display: flex;
+        align-items: end;
+        font-size: var(--display-size-xs);
+      }
+
+      @include media("mobile-m") {
+        font-size: var(--text-size-md);
+      }
+    }
 
     svg {
       width: 0.8em;
+
+      @include media("laptop-l") {
+        width: 0.4em;
+      }
+      @include media("tablet") {
+        display: none;
+      }
     }
 
     span {
       font-size: var(--display-size-xs);
+
+      @include media("laptop-l") {
+        font-size: var(--text-size-md);
+      }
+
+      @include media("tablet") {
+        font-size: var(--text-size-lg);
+      }
+
+      @include media("mobile-m") {
+        font-size: var(--text-size-md);
+      }
     }
   }
 }
