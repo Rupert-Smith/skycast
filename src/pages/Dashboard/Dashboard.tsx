@@ -33,6 +33,8 @@ export const Dashboard = () => {
   } = useGetWeather();
   const [inputText, setInputText] = useState("");
 
+  const [currentLocationError, setCurrentLocationError] = useState("");
+
   useEffect(() => {
     if (locationResponse) {
       const { latitude, longitude } = locationResponse;
@@ -80,10 +82,14 @@ export const Dashboard = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputText]);
 
-  const showError = (weatherError || locationError) && inputText !== "";
+  const showError =
+    ((weatherError || locationError) && inputText !== "") ||
+    currentLocationError;
 
   const errorText = weatherError
     ? weatherError
+    : currentLocationError
+    ? currentLocationError
     : locationError
     ? locationError
     : "Something went wrong!";
@@ -97,11 +103,11 @@ export const Dashboard = () => {
           setInputText("Your current Location");
         },
         (error) => {
-          console.error("Error fetching location:", error);
+          setCurrentLocationError("Error fetching location");
         }
       );
     } else {
-      console.error("Geolocation is not supported by this browser.");
+      setCurrentLocationError("Geolocation is not supported by this browser.");
     }
   };
 
@@ -122,7 +128,10 @@ export const Dashboard = () => {
                 <input
                   value={inputText}
                   disabled={loading}
-                  onChange={(event) => setInputText(event.target.value)}
+                  onChange={(event) => {
+                    setCurrentLocationError("");
+                    setInputText(event.target.value);
+                  }}
                   type="text"
                   placeholder="Enter a location..."
                 />
@@ -132,7 +141,6 @@ export const Dashboard = () => {
                     className="deleteIcon"
                   />
                 )}
-
                 <button disabled={loading || inputText === ""} type="submit">
                   <SearchIcon />
                 </button>
