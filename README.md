@@ -39,5 +39,6 @@ I have also deployed a demo for convenience:
 
 ---
 
-Thank you for your consideration!  
+Thank you for your consideration!
+
 **- Rupert**
