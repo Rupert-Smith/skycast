@@ -1,6 +1,7 @@
 import { useState } from "react";
+
 import { getLocations } from "../../services/api";
-import { LocationData } from "@/types/LocationData";
+import { LocationData } from "../../types/LocationData";
 
 export const useGetLocations = () => {
   const [loading, setLoading] = useState<boolean>(false);

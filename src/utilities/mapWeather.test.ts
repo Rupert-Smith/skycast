@@ -1,6 +1,7 @@
-import { mapWeather } from "./mapWeather";
 import { WeatherData } from "../types/WeatherData";
 import { mockWeatherData } from "../test-utils/mockWeatherData";
+
+import { mapWeather } from "./mapWeather";
 
 describe("mapWeather", () => {
   it("should return an empty array if weatherData is undefined", () => {

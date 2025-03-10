@@ -1,6 +1,7 @@
-import { WeatherData } from "@/types/WeatherData";
+import { WeatherData } from "../types/WeatherData";
+import { MappedWeatherItem } from "../types/MappedWeatherItem";
+
 import { weatherCodeMap } from "./mapWeatherCode";
-import { MappedWeatherItem } from "@/types/MappedWeatherItem";
 
 export const mapWeather = (weatherData?: WeatherData): MappedWeatherItem[] => {
   if (!weatherData) return [];

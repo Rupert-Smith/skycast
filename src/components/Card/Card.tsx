@@ -1,4 +1,4 @@
-import { MappedWeatherItem } from "@/types/MappedWeatherItem";
+import { MappedWeatherItem } from "../../types/MappedWeatherItem";
 import { ReactComponent as WindIcon } from "../../assets/icons/wind-light.svg";
 
 import "./Card.scss";

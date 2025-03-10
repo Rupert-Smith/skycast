@@ -1,8 +1,12 @@
+import { mockLocationData } from "../test-utils/mockLocationData";
+import { LocationData } from "../types/LocationData";
+
 import { mapLocationResponse } from "./mapLocationResponse";
 
 describe("mapLocationResponse", () => {
   it("should return a formatted string with all administrative levels when admin3 is present", () => {
-    const locationResponse = {
+    const locationResponse: LocationData = {
+      ...mockLocationData,
       name: "Springfield",
       admin1: "State",
       admin2: "County",
@@ -15,6 +19,7 @@ describe("mapLocationResponse", () => {
 
   it("should return a formatted string without admin3 when it is not present", () => {
     const locationResponse = {
+      id: 1,
       name: "Springfield",
       admin1: "State",
       admin2: "County",
@@ -26,6 +31,7 @@ describe("mapLocationResponse", () => {
 
   it("should return a formatted string with only name and country when only they are present", () => {
     const locationResponse = {
+      id: 1,
       name: "Springfield",
       country: "USA",
     };
@@ -35,6 +41,7 @@ describe("mapLocationResponse", () => {
 
   it("should filter out duplicate entries", () => {
     const locationResponse = {
+      id: 1,
       name: "Springfield",
       admin1: "State",
       admin2: "State",

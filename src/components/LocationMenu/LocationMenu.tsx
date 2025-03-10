@@ -1,12 +1,14 @@
-import "./LocationMenu.scss";
-import { useGetLocations } from "../../hooks/useGetLocations/useGetLocations";
 import { useEffect, useState, forwardRef } from "react";
+
+import { useGetLocations } from "../../hooks/useGetLocations";
 import { ReactComponent as EarthIcon } from "../../assets/icons/earth-americas-light.svg";
 import { mapLocationResponse } from "../../utilities/mapLocationResponse";
 
+import "./LocationMenu.scss";
+
 interface LocationMenuType {
   query: string;
-  propsOnClick: (event: any) => void;
+  propsOnClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 export const LocationMenu = forwardRef<

@@ -1,4 +1,4 @@
-import { MappedWeatherItem } from "@/types/MappedWeatherItem";
+import { MappedWeatherItem } from "../types/MappedWeatherItem";
 
 export const mockWeatherItem: MappedWeatherItem = {
   date: "2023-10-01",

@@ -1,7 +1,9 @@
-export const mapLocationResponse = (locationResponse: any) => {
+import { LocationData } from "../types/LocationData";
+
+export const mapLocationResponse = (locationResponse: LocationData) => {
   const { name, admin1, admin2, admin3, country } = locationResponse;
 
-  const filterDuplicates = (locationItems: string[]) => {
+  const filterDuplicates = (locationItems: (string | undefined)[]) => {
     return locationItems
       .filter((item, index, self) => item && self.indexOf(item) === index)
       .join(", ");

@@ -1,0 +1,151 @@
+@import "../../styles/mixins";
+
+.formContainer {
+  gap: 1em;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.errorBox {
+  padding: 0.7em 1.2em;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  img {
+    width: 1.2em;
+  }
+}
+
+form {
+  position: relative;
+  margin-top: 1em;
+  width: 100%;
+  display: flex;
+  gap: 1.2em;
+  justify-content: center;
+}
+
+.locationIcon {
+  width: 1em;
+  margin-bottom: 5px;
+  color: white;
+  transition: all 0.2s ease-in-out;
+
+  @include media("mobile-l") {
+    display: none;
+  }
+}
+
+.locationIcon:hover {
+  cursor: pointer;
+  z-index: 2;
+  color: var(--colour-brand-accent);
+}
+
+.searchWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.searchContainer {
+  margin-bottom: 0.5em;
+  gap: 8px;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  background-color: var(--colour-brand-tertiary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  z-index: 10;
+  min-width: 400px;
+
+  @include media("tablet") {
+    width: 80%;
+    min-width: 200px;
+  }
+
+  @include media("mobile-l") {
+    width: 95%;
+  }
+
+  input {
+    padding: 10px 14px;
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: var(--text-size-lg);
+
+    &::placeholder {
+      color: var(--colour-neutral-400);
+    }
+
+    @include media("mobile-l") {
+      font-size: var(--text-size-md);
+    }
+  }
+
+  svg {
+    width: 1.2em;
+    height: 1.2em;
+    color: var(--colour-neutral-600);
+  }
+
+  button {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 100%;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--colour-brand-primary);
+    transition: all 0.2s ease-in-out;
+    svg {
+      color: var(--colour-brand-tertiary);
+    }
+  }
+
+  button:enabled:hover {
+    cursor: pointer;
+    background-color: var(--colour-brand-primary-700);
+  }
+
+  button:disabled {
+    background-color: var(--colour-neutral-400);
+  }
+
+  .deleteIcon {
+    margin-right: 2px;
+    color: var(--colour-brand-primary-900);
+  }
+
+  .deleteIcon:hover {
+    cursor: pointer;
+  }
+}
+
+.skycastLogo,
+.searchContainer,
+.locationIcon {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

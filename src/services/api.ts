@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { WeatherData } from "../types/WeatherData";
 import { Location } from "../types/Location";
 
