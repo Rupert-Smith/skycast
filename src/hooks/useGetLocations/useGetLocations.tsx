@@ -9,7 +9,6 @@ export const useGetLocations = () => {
 
   const fetchLocations = async (locationQuery: string) => {
     try {
-      console.log("locationQuery", locationQuery);
       setLoading(true);
       const locationsResponse = await getLocations(locationQuery);
       setError("");
