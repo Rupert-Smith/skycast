@@ -41,12 +41,12 @@
     gap: 0.5em;
     align-items: center;
   }
+}
 
-  .locationMenu:hover {
-    cursor: pointer;
-    background-color: var(--colour-brand-primary);
-    color: white;
-  }
+.locationMenu:hover {
+  cursor: pointer;
+  background-color: var(--colour-brand-primary);
+  color: white;
 }
 
 .default {
