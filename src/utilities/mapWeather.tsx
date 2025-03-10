@@ -20,7 +20,7 @@ export const mapWeather = (weatherData?: WeatherData): MappedWeatherItem[] => {
   return nextFiveDays.map((date, index) => {
     const weatherInfo = weatherCodeMap[weather_code[index]] || {
       description: "Unknown",
-      icon: "❓",
+      icon: <></>,
     };
 
     const averageTemperature =

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useGetWeather } from "../../hooks/useGetWeather/useGetWeather";
 import { mapWeather } from "../../utilities/mapWeather";
 import { Card } from "../../components/Card/Card";
@@ -7,9 +7,10 @@ import { ReactComponent as SearchIcon } from "../../assets/icons/magnifying-glas
 import { ReactComponent as LocationIcon } from "../../assets/icons/location-dot-solid.svg";
 import { ReactComponent as DeleteIcon } from "../../assets/icons/xmark-solid.svg";
 import warning from "../../assets/images/warning.png";
+import { LocationMenu } from "../../components/LocationMenu/LocationMenu";
 import ReactLoading from "react-loading";
 import { mapLocationResponse } from "../../utilities/mapLocationResponse";
-import { useGetLocation } from "../../hooks/useGetLocation/useGetLocation";
+import { useGetLocations } from "../../hooks/useGetLocations/useGetLocations";
 
 import "./Dashboard.scss";
 import "./ImageSlider.scss";
@@ -17,12 +18,12 @@ import "./ImageSlider.scss";
 export const Dashboard = () => {
   const {
     error: locationError,
-    resetError: resetLocationError,
-    resetLocation,
-    locationResponse,
-    fetchLocation,
+    resetError: resetLocationsError,
+    resetLocations,
+    locationsResponse,
+    fetchLocations,
     loading: locationLoading,
-  } = useGetLocation();
+  } = useGetLocations();
   const {
     error: weatherError,
     resetError: resetWeatherError,
@@ -36,46 +37,75 @@ export const Dashboard = () => {
   const [currentLocationError, setCurrentLocationError] = useState("");
 
   useEffect(() => {
-    if (locationResponse) {
-      const { latitude, longitude } = locationResponse;
-      const formattedInput = mapLocationResponse(locationResponse);
-      console.log(locationResponse);
+    if (locationsResponse && locationsResponse.length > 0) {
+      const { latitude, longitude } = locationsResponse[0];
+      const formattedInput = mapLocationResponse(locationsResponse[0]);
 
       setInputText(formattedInput);
-      fetchWeather({ latitude, longitude });
+      fetchWeather({ latitude: `${latitude}`, longitude: `${longitude}` });
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locationResponse]);
+  }, [locationsResponse]);
+
+  const [isInputFocused, setIsInputFocused] = useState(false);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const menuRef = useRef<HTMLInputElement>(null);
 
   const mappedWeather = mapWeather(weather);
 
-  const handleSubmitLocation = (event: any) => {
-    event.preventDefault();
-    fetchLocation(inputText);
+  const handleSubmitLocation = (event?: any) => {
+    event && event.preventDefault();
+
+    setSubmitForm(true);
+    fetchLocations(inputText);
   };
 
   const loading = locationLoading || weatherLoading;
 
   const handleClearInput = () => {
     setInputText("");
-    resetLocation();
-    resetLocationError();
+    resetLocations();
+    resetLocationsError();
     resetWeather();
     resetWeatherError();
   };
 
+  const [submitForm, setSubmitForm] = useState(false);
+
   useEffect(() => {
     if (weatherError || locationError) {
-      resetLocation();
+      resetLocations();
       resetWeather();
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weatherError, locationError]);
 
   useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && menuRef.current.contains(event.target as Node)) {
+        handleSubmitLocation();
+      } else if (
+        inputRef.current &&
+        !inputRef.current.contains(event.target as Node)
+      ) {
+        setIsInputFocused(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inputText]);
+
+  useEffect(() => {
     if (inputText === "") {
-      resetLocation();
-      resetLocationError();
+      resetLocations();
+      resetLocationsError();
       resetWeather();
       resetWeatherError();
     }
@@ -126,11 +156,16 @@ export const Dashboard = () => {
               />
               <div className="searchContainer">
                 <input
+                  ref={inputRef}
                   value={inputText}
                   disabled={loading}
+                  onFocus={() => setIsInputFocused(true)}
                   onChange={(event) => {
+                    submitForm === true && setSubmitForm(false);
                     setCurrentLocationError("");
-                    setInputText(event.target.value);
+                    const query = event.target.value;
+
+                    setInputText(query);
                   }}
                   type="text"
                   placeholder="Enter a location..."
@@ -145,6 +180,13 @@ export const Dashboard = () => {
                   <SearchIcon />
                 </button>
               </div>
+              {inputText && !showError && !submitForm && isInputFocused && (
+                <LocationMenu
+                  ref={menuRef}
+                  propsOnClick={handleSubmitLocation}
+                  query={inputText}
+                />
+              )}
             </form>
             {showError && (
               <div className="errorBox">

@@ -1,0 +1,59 @@
+@import "../../styles/mixins";
+
+.locationMenu {
+  position: absolute;
+  top: 0;
+
+  border-radius: 5px;
+  transition: all 0.1s ease-in-out;
+  width: 50%;
+
+  flex-direction: row;
+  height: 2.8em;
+  margin-top: 3em;
+  margin-left: 2.2em;
+  padding: 0.8em;
+  z-index: 10;
+
+  svg {
+    width: 1em;
+    @include media("mobile-l") {
+      display: none;
+    }
+  }
+
+  @include media("tablet") {
+    width: 80%;
+  }
+
+  @include media("mobile-l") {
+    text-overflow: ellipsis;
+    font-size: var(--text-size-md);
+    width: 95%;
+    margin-top: 3em;
+    margin-left: 0em;
+  }
+
+  .locationMenuItem {
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+  }
+
+  .locationMenu:hover {
+    cursor: pointer;
+    background-color: var(--colour-brand-primary);
+    color: white;
+  }
+}
+
+.default {
+  background-color: white;
+}
+
+.selected {
+  background-color: var(--colour-brand-primary);
+  color: white;
+}

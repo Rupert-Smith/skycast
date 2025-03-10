@@ -23,12 +23,12 @@ export const getWeather = async (location: Location) => {
   return response.data;
 };
 
-export const getLocation = async (locationQuery: string) => {
+export const getLocations = async (locationQuery: string) => {
   const params = { name: locationQuery, count: 1 };
   const response = await axios.get(GEO_API_URL, { params });
 
   if (response.data?.results?.length) {
-    return response.data.results[0];
+    return response.data.results;
   }
 
   throw new Error("Location not found");
