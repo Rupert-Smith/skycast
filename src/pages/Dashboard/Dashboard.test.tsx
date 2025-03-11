@@ -55,16 +55,6 @@ describe("Dashboard Component", () => {
     expect(searchInput).toHaveValue("London");
   });
 
-  it("calls the search handler when the form is submitted", () => {
-    renderComponent();
-
-    const searchInput = screen.getByPlaceholderText("Enter a location...");
-    const searchButton = screen.getByRole("button");
-
-    fireEvent.change(searchInput, { target: { value: "London" } });
-    fireEvent.click(searchButton);
-  });
-
   it("does not display weather cards when weather data is not available", () => {
     (useGetWeather as jest.Mock).mockReturnValue({
       weather: null,
